@@ -223,7 +223,7 @@ def display_images(df, url_column, limit=30):
                 with cols[j]:
                     url = row[url_column]
                     try:
-                        st.image(url, use_column_width=True)
+                        st.image(url, use_container_width=True)
                     except:
                         st.error(f"Failed to load image: {url}")
 
