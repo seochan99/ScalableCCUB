@@ -282,6 +282,21 @@ with tab1:
     else:
         st.subheader(f"{selected_country}/{selected_category} - High Quality Images")
 
+    # Download button for HQCD data
+    if not hqcd_df.empty:
+        csv_data = hqcd_df.to_csv(index=False).encode("utf-8")
+        download_filename = (
+            f"{selected_country}_{selected_category}_HQCD.csv"
+            if selected_category != "ALL"
+            else f"{selected_country}_ALL_HQCD.csv"
+        )
+        st.download_button(
+            label="Download CSV",
+            data=csv_data,
+            file_name=download_filename,
+            mime="text/csv",
+        )
+
     display_images(hqcd_df, "url", img_limit)
 
 # Tab 2: Negative images
@@ -293,6 +308,21 @@ with tab2:
             f"{selected_country}/{selected_category} - Negative Images (Filtered)"
         )
 
+    # Download button for Negative data
+    if not negative_df.empty:
+        csv_data = negative_df.to_csv(index=False).encode("utf-8")
+        download_filename = (
+            f"{selected_country}_{selected_category}_Negative.csv"
+            if selected_category != "ALL"
+            else f"{selected_country}_ALL_Negative.csv"
+        )
+        st.download_button(
+            label="Download CSV",
+            data=csv_data,
+            file_name=download_filename,
+            mime="text/csv",
+        )
+
     display_images(negative_df, "url", img_limit)
 
 # Tab 3: Google Crawled Data
@@ -302,6 +332,21 @@ with tab3:
     else:
         st.subheader(f"{selected_country}/{selected_category} - Google Crawled Data")
 
+    # Download button for GSCD data
+    if not gscd_df.empty:
+        csv_data = gscd_df.to_csv(index=False).encode("utf-8")
+        download_filename = (
+            f"{selected_country}_{selected_category}_GSCD.csv"
+            if selected_category != "ALL"
+            else f"{selected_country}_ALL_GSCD.csv"
+        )
+        st.download_button(
+            label="Download CSV",
+            data=csv_data,
+            file_name=download_filename,
+            mime="text/csv",
+        )
+
     display_images(gscd_df, "image_url", img_limit)
 
 # Tab 4: CCUB Dataset
@@ -310,6 +355,21 @@ with tab4:
         st.subheader(f"{selected_country} - CCUB Dataset")
     else:
         st.subheader(f"{selected_country}/{selected_category} - CCUB Dataset")
+
+    # Download button for CCUB data
+    if not ccub_df.empty:
+        csv_data = ccub_df.to_csv(index=False).encode("utf-8")
+        download_filename = (
+            f"{selected_country}_{selected_category}_CCUB.csv"
+            if selected_category != "ALL"
+            else f"{selected_country}_ALL_CCUB.csv"
+        )
+        st.download_button(
+            label="Download CSV",
+            data=csv_data,
+            file_name=download_filename,
+            mime="text/csv",
+        )
 
     display_images(ccub_df, "url", img_limit)
 
